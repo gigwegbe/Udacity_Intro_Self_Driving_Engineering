@@ -20,6 +20,26 @@ def sense(color, grid, beliefs, p_hit, p_miss):
     #
     # TODO - implement this in part 2
     #
+    sum = 0
+    #
+    # TODO - implement this in part 2
+    #        
+    for i in range(len(beliefs)):
+        new_row = []
+        for j in range(len(beliefs[i])):
+            if color == grid[i][j]:
+                new_row.append((beliefs[i][j]*p_hit))
+            else:
+                new_row.append((beliefs[i][j]*p_miss))
+        new_beliefs.append(new_row)
+        
+    for i in range(len(new_beliefs)):
+        for j in range(len(new_beliefs[i])):
+            sum += new_beliefs[i][j]
+    
+    for i in range(len(new_beliefs)):
+        for j in range(len(new_beliefs[i])):
+            new_beliefs[i][j] = new_beliefs[i][j]/sum
 
     return new_beliefs
 
